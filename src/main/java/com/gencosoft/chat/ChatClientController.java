@@ -32,15 +32,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChatClientController {
 
 
-	private final ChatClient ollamaiChatClient;
+	private final ChatClient chatClient;
 
     public ChatClientController(@Qualifier("chatClientWithDateTimeTools") ChatClient chatClient) {
-		this.ollamaiChatClient = chatClient;
+		this.chatClient = chatClient;
 	}
 
 	@GetMapping("/simple/chat")
 	public String simpleChat(@RequestParam(value = "prompt") String prompt) {
-		return ollamaiChatClient.prompt(prompt).call().content();
+		return chatClient.prompt(prompt).call().content();
 	}
 
 
@@ -49,7 +49,7 @@ public class ChatClientController {
 			@RequestParam(value = "prompt") String prompt,
 			HttpServletResponse response) {
 		response.setCharacterEncoding("UTF-8");
-		return ollamaiChatClient.prompt(prompt).stream().content();
+		return chatClient.prompt(prompt).stream().content();
 	}
 
 }
