@@ -1,6 +1,5 @@
 package com.gencosoft.chat;
 
-import com.gencosoft.chat.tools.IdentityTools;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,7 +33,7 @@ public class ChatClientController {
 			@RequestParam(value = "prompt") String prompt,
 			HttpServletResponse response) {
 		response.setCharacterEncoding("UTF-8");
-		return chatClient.prompt(prompt).tools(new IdentityTools()).stream().content();
+		return chatClient.prompt(prompt).stream().content();
 	}
 
 

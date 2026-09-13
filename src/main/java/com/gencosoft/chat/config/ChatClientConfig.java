@@ -16,6 +16,7 @@ public class ChatClientConfig {
     public ChatClient chatClient(ChatModel chatModel) {
         return ChatClient.builder(chatModel)
                 .defaultAdvisors(new SimpleLoggerAdvisor())
+                .defaultTools(new DateTimeTools(), new IdentityTools())
                 .build();
     }
 

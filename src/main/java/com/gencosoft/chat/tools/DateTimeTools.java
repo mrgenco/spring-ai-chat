@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class DateTimeTools {
 
-    @Tool(description = "Get the current date and time in the user's timezone")
+    @Tool(description = "Get the current date and time in the user's timezone. Use whenever the user asks what time or date it is.")
     String getCurrentDateTime() {
         return LocalDateTime.now().atZone(LocaleContextHolder.getTimeZone().toZoneId()).toString();
     }
