@@ -11,24 +11,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ChatClientConfig {
 
-    @Bean
-    ChatClient defaultChatClient(ChatClient.Builder builder) {
-        return builder.build();
-    }
 
     @Bean
-    public ChatClient chatClientWithDateTimeTools(ChatModel chatModel) {
+    public ChatClient chatClient(ChatModel chatModel) {
         return ChatClient.builder(chatModel)
                 .defaultAdvisors(new SimpleLoggerAdvisor())
-                .defaultTools(new DateTimeTools())
-                .build();
-    }
-
-    @Bean
-    public ChatClient chatClientWithIdentityTools(ChatModel chatModel) {
-        return ChatClient.builder(chatModel)
-                .defaultAdvisors(new SimpleLoggerAdvisor())
-                .defaultTools(new IdentityTools())
                 .build();
     }
 
